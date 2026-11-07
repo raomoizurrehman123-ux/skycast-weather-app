@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SkyCast live weather and five-day forecast." />
+  <meta name="theme-color" content="#101a2c" />
+  <title>SkyCast | Weather Forecast</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <main class="app">
+    <header class="topbar">
+      <a class="brand" href="#"><span class="brand-mark">☀</span> skycast<span>.</span></a>
+      <div class="top-note"><span class="live-dot"></span> LIVE WEATHER TELEMETRY</div>
+      <button class="unit-toggle" id="unitToggle" type="button">°C <span>/</span> °F</button>
+    </header>
+
+    <section class="intro">
+      <p class="eyebrow">WEATHER AT A GLANCE</p>
+      <h1>Find your <span>forecast.</span></h1>
+      <p class="intro-copy">Real-time conditions and a five-day outlook, wherever you are.</p>
+      <form class="search-form" id="searchForm">
+        <span class="search-icon">⌕</span>
+        <input id="cityInput" type="search" placeholder="Search any city in the world..." autocomplete="off" aria-label="City name" required />
+        <button id="searchButton" type="submit">Search <span>↗</span></button>
+      </form>
+      <p class="search-hint">Try a city like London, Tokyo, New York or Wah Cantt.</p>
+    </section>
+
+    <div class="status-message" id="statusMessage" role="status" aria-live="polite" hidden></div>
+    <section class="weather-content" id="weatherContent" hidden>
+      <div class="current-card">
+        <div class="current-main">
+          <div class="location-line"><span class="pin">⌖</span><div><h2 id="cityName">--</h2><p id="currentDate">--</p></div></div>
+          <div class="current-reading"><div><strong id="temperature">--°</strong><p id="condition">--</p><span id="feelsLike">Feels like --</span></div><div class="weather-art" id="weatherArt" aria-hidden="true">☀️</div></div>
+          <p class="weather-description" id="weatherDescription">Current weather conditions</p>
+        </div>
+        <div class="current-side"><div class="side-label">TODAY'S OUTLOOK</div><div class="high-low"><div><span>HIGH</span><strong id="todayHigh">--°</strong></div><i></i><div><span>LOW</span><strong id="todayLow">--°</strong></div></div><div class="sun-note" id="sunNote">Live conditions updated from OpenWeather.</div></div>
+      </div>
+
+      <div class="section-title"><div><p class="eyebrow">LIVE MEASUREMENTS</p><h2>Weather details</h2></div><span class="updated-label" id="updatedLabel">CURRENT DATA</span></div>
+      <div class="metrics-grid">
+        <article class="metric-card"><div class="metric-icon humidity">◌</div><span>Humidity</span><strong id="humidity">--%</strong><small>Relative humidity</small></article>
+        <article class="metric-card"><div class="metric-icon wind">↝</div><span>Wind speed</span><strong id="wind">--</strong><small id="windUnit">Meters per second</small></article>
+        <article class="metric-card"><div class="metric-icon pressure">◉</div><span>Pressure</span><strong id="pressure">-- hPa</strong><small>Atmospheric pressure</small></article>
+        <article class="metric-card"><div class="metric-icon visibility">◎</div><span>Visibility</span><strong id="visibility">-- km</strong><small>Horizontal visibility</small></article>
+      </div>
+
+      <div class="section-title forecast-title"><div><p class="eyebrow">PLAN AHEAD</p><h2>5-day forecast</h2></div><span class="updated-label">DAILY SUMMARY</span></div>
+      <div class="forecast-grid" id="forecastGrid"></div>
+      <footer class="data-footer"><span>Weather data provided by OpenWeather</span><span id="coordinates">--</span></footer>
+    </section>
+    <footer class="app-footer">SKYCAST WEATHER TELEMETRY <span>·</span> BUILT WITH FETCH API</footer>
+  </main>
+  <script type="module" src="/script.js"></script>
+</body>
+</html>
